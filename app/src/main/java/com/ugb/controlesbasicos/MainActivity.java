@@ -39,13 +39,11 @@ public class MainActivity extends AppCompatActivity {
         tbh.addTab(tbh.newTabSpec("MNS").setContent(R.id.tabMonedas).setIndicator("MONEDAS", null));
         tbh.addTab(tbh.newTabSpec("TM").setContent(R.id.tabTiempo).setIndicator("TIEMPO", null));
 
-        // Botón para conversión de longitud
         btnLongitud = findViewById(R.id.btnConvertirLongitud);
         btnLongitud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    // Lógica de conversión de longitud
                     spn = findViewById(R.id.spnDElongitud);
                     int de = spn.getSelectedItemPosition();
 
@@ -62,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Botón para conversión de volumen
         btnVolumen = findViewById(R.id.btnConvertirVolumen);
         btnVolumen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Botón para conversión de masa
         btnMasa = findViewById(R.id.btnConvertirMasa);
         btnMasa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Botón para conversión de transmisión
         btnTransmision = findViewById(R.id.btnConvertirTransmision);
         btnTransmision.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Botón para conversión de monedas
         btnMonedas = findViewById(R.id.btnConvertirMonedas);
         btnMonedas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Botón para conversión de tiempo
         btnTiempo = findViewById(R.id.btnConvertirTiempo);
         btnTiempo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,7 +211,7 @@ class conversores {
         return valores[opcion][a] / valores[opcion][de] * cantidad;
     }
 }
-
+// *************TRABAJO REALIZADO POR LOS ESTUDIANTES*************
 // Mauricio Alfredo Carranza Velasquez - SMTR059023
 // Keyla Nallely Canales Nuñez - SMTR068223
 // Daniel Osvaldo Ramirez Medrano - SMTR075223
