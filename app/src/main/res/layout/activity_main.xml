@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- Tab: Longitud -->
+            <!-- Tab Longitud -->
             <RelativeLayout
                 android:id="@+id/tabLongitud"
                 android:layout_width="match_parent"
@@ -77,7 +77,7 @@
 
             </RelativeLayout>
 
-            <!-- Tab: Volumen -->
+            <!-- Tab Volumen -->
             <RelativeLayout
                 android:id="@+id/tabVolumen"
                 android:layout_width="match_parent"
@@ -134,7 +134,7 @@
 
             </RelativeLayout>
 
-            <!-- Tab: Masa -->
+            <!-- Tab Masa -->
             <RelativeLayout
                 android:id="@+id/tabMasa"
                 android:layout_width="match_parent"
@@ -248,7 +248,7 @@
 
             </RelativeLayout>
 
-            <!-- Tab: Almacenamiento -->
+            <!-- Tab Almacenamiento -->
             <RelativeLayout
                 android:id="@+id/tabTransmision"
                 android:layout_width="match_parent"
@@ -363,7 +363,7 @@
 
             </RelativeLayout>
 
-            <!-- Tab: Tiempo -->
+            <!-- Tab Tiempo -->
             <RelativeLayout
                 android:id="@+id/tabTiempo"
                 android:layout_width="match_parent"
