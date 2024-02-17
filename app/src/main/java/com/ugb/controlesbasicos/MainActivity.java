@@ -216,4 +216,4 @@ class conversores {
 // Keyla Nallely Canales Nuñez - SMTR068223
 // Daniel Osvaldo Ramirez Medrano - SMTR075223
 // Wesly Ariel Umanzor Arias - SMTR072723
-// Erick Josue Chavez Moraga -
+// Erick Josue Chavez Moraga - SMTR152021
