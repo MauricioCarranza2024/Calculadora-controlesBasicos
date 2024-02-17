@@ -212,10 +212,8 @@ class conversores {
     }
 }
 // *************TRABAJO REALIZADO POR LOS ESTUDIANTES*************
-// Mauricio Alfredo Carranza Velasquez -- SMTR059023
-// Keyla Nallely Canales Nuñez -- SMTR068223
-// Daniel Osvaldo Ramirez Medrano -- SMTR075223
-// Wesly Ariel Umanzor Arias -- SMTR072723
-// Erick Josue Chavez Moraga --
-
-
+// Mauricio Alfredo Carranza Velasquez - SMTR059023
+// Keyla Nallely Canales Nuñez - SMTR068223
+// Daniel Osvaldo Ramirez Medrano - SMTR075223
+// Wesly Ariel Umanzor Arias - SMTR072723
+// Erick Josue Chavez Moraga -
