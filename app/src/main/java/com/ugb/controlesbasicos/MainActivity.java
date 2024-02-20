@@ -2,6 +2,7 @@ package com.ugb.controlesbasicos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
-        tempval = findViewById(R.id.lblSensoreAcelerometro);
+        tempval = findViewById(R.id.lblSensorLuz);
         activarSensorAcelerometro();
     }
 
@@ -40,16 +41,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void activarSensorAcelerometro(){
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         if (sensor==null){
-            tempval.setText("tu dispositivo no cuenta con el sensor acelerometro");
+            tempval.setText("tu dispositivo no cuenta con el sensor de luz");
             finish();
         }
         sensorEventListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
-                tempval.setText("Acelerometro: X="+ sensorEvent.values[0]+ "; Y="+ sensorEvent.values[1]+"; Z="+
-                        sensorEvent.values[2]);
+               double valor = sensorEvent.values[0];
+               tempval.setText("luz: "+valor);
+
+               if(valor<=20) {
+                   getWindow().getDecorView().setBackgroundColor(Color.BLUE);
+               } else if (valor<=50) {
+                   getWindow().getDecorView().setBackgroundColor(Color.RED);
+               } else {
+                   getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
+               }
             }
 
             @Override
