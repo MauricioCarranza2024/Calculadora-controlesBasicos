@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tempval = findViewById(R.id.lblSensorGPS);
         obtenerPosicion();
+
     }
     private void obtenerPosicion(){
         try {
