@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">controlesBasicos</string>
     <string-array name="spnArea">
+        <item>metros cuadrados</item>
         <item>pie cuadrado</item>
         <item>vara cuadrada</item>
         <item>yarda cuadrada</item>
-        <item>metros cuadrados</item>
         <item>tareas</item>
         <item>manzanas</item>
         <item>hectarea</item>

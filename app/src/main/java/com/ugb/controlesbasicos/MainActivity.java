@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     class conversores {
         double[][] valores = {
                //area
-                {1, 0.1329421, 0.111111, 0.092903, 2.2957e-5, 0.0000132, 9.2903e-6}
+                {1, 10.7639, 1.431, 1.19599, 0.000247105, 0.0000132, 9.2903e-6}
 
         };
         public double convertir(int opcion, int de, int a, double cantidad) {
