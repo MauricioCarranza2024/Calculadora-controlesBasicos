@@ -1,76 +1,60 @@
 package com.ugb.controlesbasicos;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
-import android.graphics.Color;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
-    SensorManager sensorManager;
-    Sensor sensor;
-    SensorEventListener sensorEventListener;
     TextView tempval;
+    LocationManager locationManager;
+    LocationListener locationListener;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
-        tempval = findViewById(R.id.lblSensorProximidad);
-        activarSensorAcelerometro();
+        tempval = findViewById(R.id.lblSensorGPS);
+        obtenerPosicion();
     }
+    private void obtenerPosicion(){
+        try {
 
-    @Override
-    protected void onResume() {
-        iniciar();
-        super.onResume();
-    }
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION}, 1);
+                tempval.setText("Solicitando permisos de localizacion...");
+            }
+            /*Location location;
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            mostrarPosicion(location);*/
 
-    @Override
-    protected void onPause() {
-        detener();
-        super.onPause();
-    }
-
-    private void activarSensorAcelerometro(){
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-        if (sensor==null){
-            tempval.setText("tu dispositivo no cuenta con el sensor de luz");
-            finish();
+            locationListener = new LocationListener() {
+                @Override
+                public void onLocationChanged(@NonNull Location location) {
+                    mostrarPosicion(location);
+                }
+            };
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5, 5, locationListener);
+        }catch (Exception e){
+            tempval.setText(e.getMessage());
         }
-        sensorEventListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent sensorEvent) {
-               double valor = sensorEvent.values[0];
-               tempval.setText("Proximidad: "+valor);
-
-               if(valor<=4) {
-                   getWindow().getDecorView().setBackgroundColor(Color.BLUE);
-               } else if (valor<=8) {
-                   getWindow().getDecorView().setBackgroundColor(Color.RED);
-               } else {
-                   getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
-               }
-            }
-
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int i) {
-
-            }
-        };
     }
-    private void iniciar(){
-        sensorManager.registerListener(sensorEventListener, sensor, 2000*1000);
-    }
-    private  void detener(){
-        sensorManager.unregisterListener(sensorEventListener);
+    private void mostrarPosicion(Location location){
+        tempval.setText("Posicion: Latitud"+ location.getLatitude()+ "; Longitud: "+ location.getLongitude()+"; Altitud"+ location.getAltitude());
+
     }
 }
