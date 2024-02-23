@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -23,60 +23,59 @@
 
             <!-- Tab Longitud -->
             <RelativeLayout
-                android:id="@+id/tabLongitud"
+                android:id="@+id/tabArea"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/lblDelongitud"
+                    android:id="@+id/lblDeArea"
                     android:text="DE"
                     android:layout_marginTop="60dp"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
-                    android:id="@+id/lblAlongitud"
+                    android:id="@+id/lblAArea"
                     android:text="A"
-                    android:layout_below="@id/lblDelongitud"
+                    android:layout_below="@id/lblDeArea"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <Spinner
-                    android:id="@+id/spnDElongitud"
-                    android:entries="@array/spnLongitud"
-                    android:layout_alignBaseline="@id/lblDelongitud"
+                    android:id="@+id/spnDEArea"
+                    android:entries="@array/spnArea"
+                    android:layout_alignBaseline="@id/lblDeArea"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/lblDelongitud"
+                    android:layout_toRightOf="@id/lblDeArea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <Spinner
-                    android:id="@+id/spnAlongitud"
-                    android:entries="@array/spnLongitud"
-                    android:layout_alignBaseline="@id/lblAlongitud"
+                    android:id="@+id/spnAArea"
+                    android:entries="@array/spnArea"
+                    android:layout_alignBaseline="@id/lblAArea"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/lblAlongitud"
+                    android:layout_toRightOf="@id/lblAArea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <EditText
-                    android:id="@+id/txtCantidadLongitud"
-                    android:layout_below="@+id/spnAlongitud"
+                    android:id="@+id/txtCantidadArea"
+                    android:layout_below="@+id/spnAArea"
                     android:layout_marginTop="40dp"
                     android:hint="Cantidad a convertir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <Button
-                    android:id="@+id/btnConvertirLongitud"
+                    android:id="@+id/btnConvertirArea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtCantidadLongitud"
+                    android:layout_below="@+id/txtCantidadArea"
                     android:layout_marginTop="40dp"
                     android:text="convertir" />
-
             </RelativeLayout>
-
-
-
+        </FrameLayout>
+    </LinearLayout>
+</TabHost>
