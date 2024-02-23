@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">controlesBasicos</string>
-
+    <string-array name="spnLongitud">
+        <item>Metros</item>
+        <item>Cm</item>
+        <item>Pulgada</item>
+        <item>pie</item>
+        <item>Vara</item>
+        <item>Yarda</item>
+        <item>Km</item>
+        <item>Millla</item>
+    </string-array>
 </resources>
