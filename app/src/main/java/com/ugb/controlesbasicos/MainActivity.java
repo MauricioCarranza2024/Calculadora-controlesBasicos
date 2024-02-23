@@ -46,13 +46,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Mover la clase conversores fuera del método onCreate
+
     class conversores {
         double[][] valores = {
-                // Longitud
+               //area
+                {1, 0.1329421, 0.111111, 0.092903, 2.2957e-5, 0.0000132, 9.2903e-6}
 
         };
-
         public double convertir(int opcion, int de, int a, double cantidad) {
             return valores[opcion][a] / valores[opcion][de] * cantidad;
         }
