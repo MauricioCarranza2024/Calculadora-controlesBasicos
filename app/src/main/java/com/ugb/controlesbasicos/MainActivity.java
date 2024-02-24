@@ -63,23 +63,16 @@ public class MainActivity extends AppCompatActivity {
                 }else if(agua>28){
                     cal= (agua-28)*0.65+((28-18)*0.45)+6;
                 }
-
                 tempval = findViewById(R.id.lblcal);
                 tempval.setText("Total a pagar: $"+cal);
             }
         });
-
-
-
     }
 }
-
 class conversores {
     double[][] valores = {
-
             {1, 1.4308, 1.19599, 10.7639, 0.0022896393817974, 0.0001431, 0.0001},
     };
-
     public double convertir(int opcion, int de, int a, double cantidad) {
         return valores[opcion][a] / valores[opcion][de] * cantidad;
     }
