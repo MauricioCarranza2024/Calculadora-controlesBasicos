@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <TabHost xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/tbhParcial"
+    android:id="@+id/tbhParcial_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,7 +19,7 @@
             android:layout_height="match_parent">
 
             <RelativeLayout
-                android:id="@+id/Medidor_agua"
+                android:id="@+id/tabMedidor_agua"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -31,39 +29,38 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="60dp"
-                    android:text="Agua:" />
-
+                    android:text="Tarifa por metros:"
+                    android:textColor="@android:color/black" />
 
                 <EditText
                     android:id="@+id/txtagua"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:layout_alignBaseline="@id/lblagua"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/lblagua"
-                    />
-
+                    android:layout_below="@id/lblagua"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="Metros consumidos" />
 
                 <Button
                     android:id="@+id/btnCalcular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtagua"
-                    android:layout_marginTop="40dp"
-                    android:text="calcular" />
+                    android:layout_below="@id/txtagua"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Calcular" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblcal"
-                    android:layout_below="@+id/btnCalcular"
-                    android:textSize="20dp"
-                    android:text="Total a cancelar de agua:"
+                    android:layout_below="@id/btnCalcular"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
-                    />
-
+                    android:text="Resultado:" />
 
             </RelativeLayout>
 
@@ -78,7 +75,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="60dp"
-                    android:text="DE:" />
+                    android:text="DE:"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/lblAArea"
@@ -87,7 +85,8 @@
                     android:layout_below="@id/lblDEArea"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="A:" />
+                    android:text="A:"
+                    android:textColor="@android:color/black" />
 
                 <Spinner
                     android:id="@+id/spnDEArea"
@@ -122,10 +121,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtCantidadDeArea"
                     android:layout_marginTop="40dp"
-                    android:text="convertir" />
+                    android:text="Convertir" />
 
             </RelativeLayout>
-
 
         </FrameLayout>
     </LinearLayout>

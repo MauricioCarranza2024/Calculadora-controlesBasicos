@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tbh = findViewById(R.id.tbhParcial);
+        tbh = findViewById(R.id.tbhParcial_1);
         tbh.setup();
 
-        tbh.addTab(tbh.newTabSpec("AGU").setContent(R.id.Medidor_agua).setIndicator("Agua", null));
+        tbh.addTab(tbh.newTabSpec("AGU").setContent(R.id.tabMedidor_agua).setIndicator("Agua", null));
         tbh.addTab(tbh.newTabSpec("ARE").setContent(R.id.tabArea).setIndicator("Area", null));
 
         btnArea = findViewById(R.id.btnConvertirArea);
