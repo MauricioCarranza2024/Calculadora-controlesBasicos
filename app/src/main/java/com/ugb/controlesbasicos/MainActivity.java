@@ -10,11 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
     TabHost tbh;
     TextView tempval;
     Spinner spn;
     Button btnArea;
+    Button btnCalcul;
     conversores miObj = new conversores();
 
     @Override
@@ -22,9 +22,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tbh = findViewById(android.R.id.tabcontent); // Corrección aquí
+        tbh = findViewById(R.id.tbhParcial);
         tbh.setup();
-        tbh.addTab(tbh.newTabSpec("ARA").setContent(R.id.tabArea).setIndicator("AREA", null));
+
+        tbh.addTab(tbh.newTabSpec("AGU").setContent(R.id.Medidor_agua).setIndicator("Agua", null));
+        tbh.addTab(tbh.newTabSpec("ARE").setContent(R.id.tabArea).setIndicator("Area", null));
 
         btnArea = findViewById(R.id.btnConvertirArea);
         btnArea.setOnClickListener(new View.OnClickListener() {
@@ -33,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     spn = findViewById(R.id.spnDEArea);
                     int de = spn.getSelectedItemPosition();
+
                     spn = findViewById(R.id.spnAArea);
                     int a = spn.getSelectedItemPosition();
-                    tempval = findViewById(R.id.txtCantidadArea);
+
+                    tempval = findViewById(R.id.txtCantidadDeArea);
                     double cantidad = Double.parseDouble(tempval.getText().toString());
                     double resp = miObj.convertir(0, de, a, cantidad);
                     Toast.makeText(getApplicationContext(), "Respuesta:" + resp, Toast.LENGTH_LONG).show();
@@ -44,18 +48,39 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
+        btnCalcul = findViewById(R.id.btnCalcular);
+        btnCalcul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tempval = findViewById(R.id.txtagua);
+                double agua = Double.parseDouble(tempval.getText().toString());
+
+                double cal = 0;
+                if(agua<=18){
+                    cal=6;
+                }else if (agua<=28){
+                    cal = (agua-18)*0.45+6;
+                }else if(agua>28){
+                    cal= (agua-28)*0.65+((28-18)*0.45)+6;
+                }
+
+                tempval = findViewById(R.id.lblcal);
+                tempval.setText("Total a pagar: $"+cal);
+            }
+        });
 
 
-    class conversores {
-        double[][] valores = {
-               //area
-                {1, 10.7639, 1.431, 1.19599, 0.000247105, 0.0000132, 9.2903e-6}
 
-        };
-        public double convertir(int opcion, int de, int a, double cantidad) {
-            return valores[opcion][a] / valores[opcion][de] * cantidad;
-        }
     }
 }
 
+class conversores {
+    double[][] valores = {
+
+            {1, 1.4308, 1.19599, 10.7639, 0.0022896393817974, 0.0001431, 0.0001},
+    };
+
+    public double convertir(int opcion, int de, int a, double cantidad) {
+        return valores[opcion][a] / valores[opcion][de] * cantidad;
+    }
+}
