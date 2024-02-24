@@ -61,7 +61,6 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
                     android:text="Resultado:" />
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -122,9 +121,7 @@
                     android:layout_below="@+id/txtCantidadDeArea"
                     android:layout_marginTop="40dp"
                     android:text="Convertir" />
-
             </RelativeLayout>
-
         </FrameLayout>
     </LinearLayout>
 </TabHost>

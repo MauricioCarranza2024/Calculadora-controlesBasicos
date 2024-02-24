@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnArea = findViewById(R.id.btnConvertirArea);
         btnArea.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 try {
