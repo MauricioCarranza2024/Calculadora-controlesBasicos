@@ -1,6 +1,7 @@
 package com.ugb.controlesbasicos;
 
-import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +10,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity{
     TabHost tbh;
     TextView tempval;
     Spinner spn;
@@ -69,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }
 class conversores {
     double[][] valores = {
