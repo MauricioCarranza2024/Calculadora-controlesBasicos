@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,7 +17,7 @@
         android:id="@+id/txtdireccion"
         android:hint="Direccion"
         android:inputType="textMultiLine"
-        android:layout_below="@+id/txtnombre"
+        android:layout_below="@id/txtnombre"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -24,7 +25,7 @@
         android:id="@+id/txtTelefono"
         android:hint="Telefono"
         android:inputType="phone"
-        android:layout_below="@+id/txtdireccion"
+        android:layout_below="@id/txtdireccion"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -32,7 +33,7 @@
         android:id="@+id/txtEmail"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:layout_below="@+id/txtTelefono"
+        android:layout_below="@id/txtTelefono"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -40,15 +41,15 @@
         android:id="@+id/txtDui"
         android:hint="DUI"
         android:inputType="number"
-        android:layout_below="@+id/txtEmail"
+        android:layout_below="@id/txtEmail"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/btnGuardarAmigos"
-        android:text="GUARDAR AMIGOS"
+        android:id="@+id/btnGuardarAmigo"
+        android:text="GUARDAR AMIGO"
         android:layout_width="match_parent"
-        android:layout_below="@+id/txtDui"
+        android:layout_below="@id/txtDui"
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content"/>
 
@@ -61,4 +62,5 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:srcCompat="@android:drawable/ic_menu_revert" />
+
 </RelativeLayout>
