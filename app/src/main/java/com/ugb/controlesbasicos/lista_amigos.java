@@ -30,8 +30,9 @@ public class lista_amigos extends AppCompatActivity {
     Cursor cAmigos;
     amigos misAamigos;
     DB db;
-    final ArrayList<amigos> alAmigos=new ArrayList<amigos>();
-    final ArrayList<amigos> alAmigosCopy=new ArrayList<amigos>();
+    final ArrayList<amigos> alAmigos = new ArrayList<amigos>();
+    final ArrayList<amigos> alAmigosCopy = new ArrayList<amigos>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +42,14 @@ public class lista_amigos extends AppCompatActivity {
         btnAgregarAmigos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                parametros.putString("accion","nuevo");
+                parametros.putString("accion", "nuevo");
                 abrirActividad(parametros);
             }
         });
         obtenerDatosAmigos();
         buscarAmigos();
     }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -58,30 +60,32 @@ public class lista_amigos extends AppCompatActivity {
         cAmigos.moveToPosition(info.position);
         menu.setHeaderTitle(cAmigos.getString(1)); //1 es el nombre
     }
+
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        try{
-            switch (item.getItemId()){
-                case R.id.mnxAgregar:
-                    parametros.putString("accion","nuevo");
-                    abrirActividad(parametros);
-                    break;
-                case R.id.mnxModificar:
-                    String[] amigos = {
-                            cAmigos.getString(0), //idAmigo
-                            cAmigos.getString(1), //nombre
-                            cAmigos.getString(2), //direccion
-                            cAmigos.getString(3), //tel
-                            cAmigos.getString(4), //email
-                            cAmigos.getString(5), //dui
-                    };
-                    parametros.putString("accion", "modificar");
-                    parametros.putStringArray("amigos", amigos);
-                    abrirActividad(parametros);
-                    break;
-                case R.id.mnxEliminar:
-                    eliminarAmigos();
-                    break;
+        try {
+            if (item.getItemId() == R.id.mnxAgregar) {
+                parametros.putString("accion", "nuevo");
+                abrirActividad(parametros);
+
+            } else if (item.getItemId() == R.id.mnxModificar) {
+                String[] amigos = {
+                        cAmigos.getString(0), //idAmigo
+                        cAmigos.getString(1), //nombre
+                        cAmigos.getString(2), //direccion
+                        cAmigos.getString(3), //tel
+                        cAmigos.getString(4), //email
+                        cAmigos.getString(5), //dui
+                        cAmigos.getString(6)//foto
+                };
+                parametros.putString("accion", "modificar");
+                parametros.putStringArray("amigos", amigos);
+                abrirActividad(parametros);
+
+            }else if (item.getItemId()==R.id.mnxEliminar){
+
+                eliminarAmigos();
+
             }
             return true;
         }catch (Exception e){
@@ -139,7 +143,8 @@ public class lista_amigos extends AppCompatActivity {
                             cAmigos.getString(2),//direccion
                             cAmigos.getString(3),//telefono
                             cAmigos.getString(4),//email
-                            cAmigos.getString(5)//dui
+                            cAmigos.getString(5),//dui
+                            cAmigos.getString(6)//foto
                     );
                     alAmigos.add(misAamigos);
                 }while(cAmigos.moveToNext());
