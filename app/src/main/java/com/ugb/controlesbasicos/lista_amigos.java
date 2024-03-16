@@ -46,8 +46,8 @@ public class lista_amigos extends AppCompatActivity {
                 abrirActividad(parametros);
             }
         });
-        obtenerDatosAmigos();
-        buscarAmigos();
+        obtenerDatosProducto();
+        buscarProductos();
     }
 
     @Override
@@ -69,7 +69,7 @@ public class lista_amigos extends AppCompatActivity {
                 abrirActividad(parametros);
 
             } else if (item.getItemId() == R.id.mnxModificar) {
-                String[] amigos = {
+                String[] producto = {
                         cProductos.getString(0), //idProductos
                         cProductos.getString(1), //codigo
                         cProductos.getString(2), //descripcion
@@ -80,12 +80,12 @@ public class lista_amigos extends AppCompatActivity {
 
                 };
                 parametros.putString("accion", "modificar");
-                parametros.putStringArray("amigos", amigos);
+                parametros.putStringArray("amigos", producto);
                 abrirActividad(parametros);
 
             }else if (item.getItemId()==R.id.mnxEliminar){
 
-                eliminarAmigos();
+                eliminarProductos();
 
             }
             return true;
@@ -94,7 +94,7 @@ public class lista_amigos extends AppCompatActivity {
             return super.onContextItemSelected(item);
         }
     }
-    private void eliminarAmigos(){
+    private void eliminarProductos(){
         try{
             AlertDialog.Builder confirmar = new AlertDialog.Builder(lista_amigos.this);
             confirmar.setTitle("Estas seguro de eliminar a: ");
@@ -104,10 +104,10 @@ public class lista_amigos extends AppCompatActivity {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     String respuesta = db.administrar_amigos("eliminar", new String[]{cProductos.getString(0)});//0 es el idProductos
                     if(respuesta.equals("ok")){
-                        mostrarMsg("Amigo eliminado con exito");
-                        obtenerDatosAmigos();
+                        mostrarMsg("Producto eliminado con exito");
+                        obtenerDatosProducto();
                     }else{
-                        mostrarMsg("Error al eliminar el amigo: "+ respuesta);
+                        mostrarMsg("Error al eliminar el producto: "+ respuesta);
                     }
                 }
             });
@@ -119,7 +119,7 @@ public class lista_amigos extends AppCompatActivity {
             });
             confirmar.create().show();
         }catch (Exception e){
-            mostrarMsg("Error al eliminar amigo: "+ e.getMessage());
+            mostrarMsg("Error al eliminar producto: "+ e.getMessage());
         }
     }
     private void abrirActividad(Bundle parametros){
@@ -127,7 +127,7 @@ public class lista_amigos extends AppCompatActivity {
         abrirActividad.putExtras(parametros);
         startActivity(abrirActividad);
     }
-    private void obtenerDatosAmigos(){
+    private void obtenerDatosProducto(){
         try {
             alProductos.clear();
             alProductosCopy.clear();
@@ -157,13 +157,13 @@ public class lista_amigos extends AppCompatActivity {
 
                 registerForContextMenu(lts);
             }else{
-                mostrarMsg("No hay Datos de amigos que mostrar.");
+                mostrarMsg("No hay Datos de productos que mostrar.");
             }
         }catch (Exception e){
             mostrarMsg("Error al mostrar datos: "+ e.getMessage());
         }
     }
-    private void buscarAmigos(){
+    private void buscarProductos(){
         TextView tempVal;
         tempVal = findViewById(R.id.txtBuscarProductos);
         tempVal.addTextChangedListener(new TextWatcher() {

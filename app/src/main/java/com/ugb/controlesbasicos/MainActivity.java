@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
                 DB db = new DB(getApplicationContext(),"", null, 1);
                 String respuesta = db.administrar_amigos(accion, datos);
                 if( respuesta.equals("ok") ){
-                    mostrarMsg("Amigos registrado con exito.");
+                    mostrarMsg("El producto ha sido registrado con exito.");
                     listarAmigos();
                 }else {
-                    mostrarMsg("Error al intentar registrar el amigo: "+ respuesta);
+                    mostrarMsg("Error al intentar registrar el producto: "+ respuesta);
                 }
             }
         });
@@ -80,20 +80,20 @@ public class MainActivity extends AppCompatActivity {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tomarFotoAmigo();
+                tomarFotoProducto();
             }
         });
-        mostrarDatosAmigos();
+        mostrarDatosProducto();
     }
-    private void tomarFotoAmigo(){
+    private void tomarFotoProducto(){
         tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File fotoAmigo = null;
+        File fotoProducto = null;
         try{
-            fotoAmigo = crearImagenamigo();
-            if( fotoAmigo!=null ){
-                Uri urifotoAmigo = FileProvider.getUriForFile(MainActivity.this,
-                        "com.ugb.controlesbasicos.fileprovider", fotoAmigo);
-                tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, urifotoAmigo);
+            fotoProducto = crearImagenproducto();
+            if( fotoProducto!=null ){
+                Uri urifotoProducto = FileProvider.getUriForFile(MainActivity.this,
+                        "com.ugb.controlesbasicos.fileprovider", fotoProducto);
+                tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, urifotoProducto);
                 startActivityForResult(tomarFotoIntent, 1);
             }else{
                 mostrarMsg("No se pudo tomar la foto");
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             mostrarMsg("Error al seleccionar la foto"+ e.getMessage());
         }
     }
-    private File crearImagenamigo() throws Exception{
+    private File crearImagenproducto() throws Exception{
         String fechaHoraMs = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()),
                 fileName = "imagen_"+fechaHoraMs+"_";
         File dirAlmacenamiento = getExternalFilesDir(Environment.DIRECTORY_DCIM);
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         urlCompletaFoto = image.getAbsolutePath();
         return image;
     }
-    private void mostrarDatosAmigos(){
+    private void mostrarDatosProducto(){
         try{
             Bundle parametros = getIntent().getExtras();
             accion = parametros.getString("accion");
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 img.setImageBitmap(imagenBitmap);
             }
         }catch (Exception e){
-            mostrarMsg("Error al mostrar los datos amigos");
+            mostrarMsg("Error al mostrar los datos de los productos");
         }
     }
     private void mostrarMsg(String msg){
