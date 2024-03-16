@@ -25,21 +25,21 @@ import java.util.ArrayList;
 
 public class lista_amigos extends AppCompatActivity {
     Bundle parametros = new Bundle();
-    FloatingActionButton btnAgregarAmigos;
+    FloatingActionButton btnAgregarProductos;
     ListView lts;
-    Cursor cAmigos;
+    Cursor cProductos;
     clientes misClientes;
     DB db;
-    final ArrayList<amigos> alAmigos = new ArrayList<amigos>();
-    final ArrayList<amigos> alAmigosCopy = new ArrayList<amigos>();
+    final ArrayList<amigos> alProductos = new ArrayList<amigos>();
+    final ArrayList<amigos> alProductosCopy = new ArrayList<amigos>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_amigos);
 
-        btnAgregarAmigos = findViewById(R.id.fabAgregarAmigos);
-        btnAgregarAmigos.setOnClickListener(new View.OnClickListener() {
+        btnAgregarProductos = findViewById(R.id.fabAgregarAmigos);
+        btnAgregarProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 parametros.putString("accion", "nuevo");
@@ -57,8 +57,8 @@ public class lista_amigos extends AppCompatActivity {
         inflater.inflate(R.menu.mimenu, menu);
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        cAmigos.moveToPosition(info.position);
-        menu.setHeaderTitle(cAmigos.getString(1)); //1 es el nombre
+        cProductos.moveToPosition(info.position);
+        menu.setHeaderTitle(cProductos.getString(1)); //1 es el codigo
     }
 
     @Override
@@ -70,13 +70,14 @@ public class lista_amigos extends AppCompatActivity {
 
             } else if (item.getItemId() == R.id.mnxModificar) {
                 String[] amigos = {
-                        cAmigos.getString(0), //idAmigo
-                        cAmigos.getString(1), //nombre
-                        cAmigos.getString(2), //direccion
-                        cAmigos.getString(3), //tel
-                        cAmigos.getString(4), //email
-                        cAmigos.getString(5), //dui
-                        cAmigos.getString(6)//foto
+                        cProductos.getString(0), //idProductos
+                        cProductos.getString(1), //codigo
+                        cProductos.getString(2), //descripcion
+                        cProductos.getString(3), //marca
+                        cProductos.getString(4), //presentacion
+                        cProductos.getString(5), //precio
+                        cProductos.getString(6), //foto
+
                 };
                 parametros.putString("accion", "modificar");
                 parametros.putStringArray("amigos", amigos);
@@ -97,11 +98,11 @@ public class lista_amigos extends AppCompatActivity {
         try{
             AlertDialog.Builder confirmar = new AlertDialog.Builder(lista_amigos.this);
             confirmar.setTitle("Estas seguro de eliminar a: ");
-            confirmar.setMessage(cAmigos.getString(1)); //1 es el nombre
+            confirmar.setMessage(cProductos.getString(1)); //1 es el codigo
             confirmar.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    String respuesta = db.administrar_amigos("eliminar", new String[]{cAmigos.getString(0)});//0 es el idAmigo
+                    String respuesta = db.administrar_amigos("eliminar", new String[]{cProductos.getString(0)});//0 es el idProductos
                     if(respuesta.equals("ok")){
                         mostrarMsg("Amigo eliminado con exito");
                         obtenerDatosAmigos();
@@ -128,29 +129,30 @@ public class lista_amigos extends AppCompatActivity {
     }
     private void obtenerDatosAmigos(){
         try {
-            alAmigos.clear();
-            alAmigosCopy.clear();
+            alProductos.clear();
+            alProductosCopy.clear();
 
             db = new DB(lista_amigos.this, "", null, 1);
-            cAmigos = db.consultar_amigos();
+            cProductos = db.consultar_amigos();
 
-            if( cAmigos.moveToFirst() ){
+            if( cProductos.moveToFirst() ){
                 lts = findViewById(R.id.ltsAmigos);
                 do{
-                    misAamigos = new amigos(
-                            cAmigos.getString(0),//idAmigo
-                            cAmigos.getString(1),//nombre
-                            cAmigos.getString(2),//direccion
-                            cAmigos.getString(3),//telefono
-                            cAmigos.getString(4),//email
-                            cAmigos.getString(5),//dui
-                            cAmigos.getString(6)//foto
-                    );
-                    alAmigos.add(misAamigos);
-                }while(cAmigos.moveToNext());
-                alAmigosCopy.addAll(alAmigos);
+                    misClientes = new amigos(
+                            cProductos.getString(0),//idProducto
+                            cProductos.getString(1),//codigo
+                            cProductos.getString(2),//descripcion
+                            cProductos.getString(3),//marca
+                            cProductos.getString(4),//presentacion
+                            cProductos.getString(5),//precio
+                            cProductos.getString(6),//foto
 
-                adaptadorImagenes adImagenes = new adaptadorImagenes(lista_amigos.this, alAmigos);
+                    );
+                    alProductos.add(misClientes);
+                }while(cProductos.moveToNext());
+                alProductosCopy.addAll(alProductos);
+
+                adaptadorImagenes adImagenes = new adaptadorImagenes(lista_amigos.this, alProductos);
                 lts.setAdapter(adImagenes);
 
                 registerForContextMenu(lts);
@@ -172,17 +174,17 @@ public class lista_amigos extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 try {
-                    alAmigos.clear();
+                    alProductos.clear();
                     String valor = tempVal.getText().toString().trim().toLowerCase();
                     if( valor.length()<=0 ){
-                        alAmigos.addAll(alAmigosCopy);
+                        alProductos.addAll(alProductosCopy);
                     }else{
-                        for (amigos amigo : alAmigosCopy){
-                            String nombre = amigo.getNombre();
-                            String direccion = amigo.getDireccion();
-                            String tel = amigo.getTelefono();
-                            String email = amigo.getEmail();
-                            String dui = amigo.getDui();
+                        for (amigos amigo : alProductosCopy){
+                            String codigo = tienda.getNombre();
+                            String descripcion = amigo.getDireccion();
+                            String marca = amigo.getTelefono();
+                            String presentacion = amigo.getEmail();
+                            String precio = amigo.getDui();
                             if(nombre.toLowerCase().trim().contains(valor) ||
                                     direccion.toLowerCase().trim().contains(valor) ||
                                     tel.trim().contains(valor) ||
