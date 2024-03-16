@@ -165,7 +165,7 @@ public class lista_amigos extends AppCompatActivity {
     }
     private void buscarAmigos(){
         TextView tempVal;
-        tempVal = findViewById(R.id.txtBuscarAmigos);
+        tempVal = findViewById(R.id.txtBuscarProductos);
         tempVal.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

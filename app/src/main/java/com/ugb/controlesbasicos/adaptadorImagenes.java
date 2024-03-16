@@ -16,11 +16,11 @@ import java.util.ArrayList;
 public class adaptadorImagenes extends BaseAdapter {
     Context context;
     ArrayList<amigos> datosProductosArrayList;
-    clientes misClientes;
+    amigos misClientes;
     LayoutInflater layoutInflater;
-    public adaptadorImagenes(Context context, ArrayList<amigos> datosAmigosArrayList) {
+    public adaptadorImagenes(Context context, ArrayList<amigos> datosProductosArrayList) {
         this.context = context;
-        this.datosProductosArrayList = datosAmigosArrayList;
+        this.datosProductosArrayList = datosProductosArrayList;
     }
     @Override
     public int getCount() {
