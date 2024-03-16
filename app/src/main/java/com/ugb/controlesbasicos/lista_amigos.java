@@ -28,7 +28,7 @@ public class lista_amigos extends AppCompatActivity {
     FloatingActionButton btnAgregarProductos;
     ListView lts;
     Cursor cProductos;
-    ll misClientes;
+    amigos misClientes;
     DB db;
     final ArrayList<amigos> alProductos = new ArrayList<amigos>();
     final ArrayList<amigos> alProductosCopy = new ArrayList<amigos>();
@@ -145,7 +145,7 @@ public class lista_amigos extends AppCompatActivity {
                             cProductos.getString(3),//marca
                             cProductos.getString(4),//presentacion
                             cProductos.getString(5),//precio
-                            cProductos.getString(6),//foto
+                            cProductos.getString(6)//foto
 
                     );
                     alProductos.add(misClientes);
