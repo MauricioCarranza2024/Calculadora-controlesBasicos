@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnRegresar = findViewById(R.id.fabListaAmigos);
+        btnRegresar = findViewById(R.id.fabListaProductos);
         btnRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,26 +46,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(regresarLista);
             }
         });
-        btn = findViewById(R.id.btnGuardarAmigo);
+        btn = findViewById(R.id.btnGuardarProducto);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tempVal = findViewById(R.id.txtnombre);
-                String nombre = tempVal.getText().toString();
+                tempVal = findViewById(R.id.txtcodigo);
+                String codigo = tempVal.getText().toString();
 
-                tempVal = findViewById(R.id.txtdireccion);
-                String direccion = tempVal.getText().toString();
+                tempVal = findViewById(R.id.txtdescripcion);
+                String descripcion = tempVal.getText().toString();
 
-                tempVal = findViewById(R.id.txtTelefono);
-                String tel = tempVal.getText().toString();
+                tempVal = findViewById(R.id.txtMarca);
+                String marca = tempVal.getText().toString();
 
-                tempVal = findViewById(R.id.txtEmail);
-                String email = tempVal.getText().toString();
+                tempVal = findViewById(R.id.txtPresentacion);
+                String presentacion = tempVal.getText().toString();
 
-                tempVal = findViewById(R.id.txtDui);
-                String dui = tempVal.getText().toString();
+                tempVal = findViewById(R.id.txtPrecio);
+                String precio = tempVal.getText().toString();
 
-                String[] datos = new String[]{id,nombre,direccion,tel,email,dui, urlCompletaFoto};
+                String[] datos = new String[]{id,codigo,descripcion,marca,presentacion,precio, urlCompletaFoto};
                 DB db = new DB(getApplicationContext(),"", null, 1);
                 String respuesta = db.administrar_amigos(accion, datos);
                 if( respuesta.equals("ok") ){
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        img = findViewById(R.id.btnImgAmigo);
+        img = findViewById(R.id.btnImgProducto);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,25 +133,25 @@ public class MainActivity extends AppCompatActivity {
             accion = parametros.getString("accion");
 
             if(accion.equals("modificar")){
-                String[] amigos = parametros.getStringArray("amigos");
-                id = amigos[0];
+                String[] productos = parametros.getStringArray("amigos");
+                id = productos[0];
 
-                tempVal = findViewById(R.id.txtnombre);
-                tempVal.setText(amigos[1]);
+                tempVal = findViewById(R.id.txtcodigo);
+                tempVal.setText(productos[1]);
 
-                tempVal = findViewById(R.id.txtdireccion);
-                tempVal.setText(amigos[2]);
+                tempVal = findViewById(R.id.txtdescripcion);
+                tempVal.setText(productos[2]);
 
-                tempVal = findViewById(R.id.txtTelefono);
-                tempVal.setText(amigos[3]);
+                tempVal = findViewById(R.id.txtMarca);
+                tempVal.setText(productos[3]);
 
-                tempVal = findViewById(R.id.txtEmail);
-                tempVal.setText(amigos[4]);
+                tempVal = findViewById(R.id.txtPresentacion);
+                tempVal.setText(productos[4]);
 
-                tempVal = findViewById(R.id.txtDui);
-                tempVal.setText(amigos[5]);
+                tempVal = findViewById(R.id.txtPrecio);
+                tempVal.setText(productos[5]);
 
-                urlCompletaFoto = amigos[6];
+                urlCompletaFoto = productos[6];
                 Bitmap imagenBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
                 img.setImageBitmap(imagenBitmap);
             }

@@ -28,7 +28,7 @@ public class lista_amigos extends AppCompatActivity {
     FloatingActionButton btnAgregarProductos;
     ListView lts;
     Cursor cProductos;
-    Clientes misClientes;
+    ll misClientes;
     DB db;
     final ArrayList<amigos> alProductos = new ArrayList<amigos>();
     final ArrayList<amigos> alProductosCopy = new ArrayList<amigos>();
@@ -38,7 +38,7 @@ public class lista_amigos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_amigos);
 
-        btnAgregarProductos = findViewById(R.id.fabAgregarAmigos);
+        btnAgregarProductos = findViewById(R.id.fabAgregarProductos);
         btnAgregarProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,7 +136,7 @@ public class lista_amigos extends AppCompatActivity {
             cProductos = db.consultar_amigos();
 
             if( cProductos.moveToFirst() ){
-                lts = findViewById(R.id.ltsAmigos);
+                lts = findViewById(R.id.ltsProductos);
                 do{
                     misClientes = new amigos(
                             cProductos.getString(0),//idProducto
