@@ -28,7 +28,7 @@ public class lista_amigos extends AppCompatActivity {
     FloatingActionButton btnAgregarAmigos;
     ListView lts;
     Cursor cAmigos;
-    amigos misAamigos;
+    clientes misClientes;
     DB db;
     final ArrayList<amigos> alAmigos = new ArrayList<amigos>();
     final ArrayList<amigos> alAmigosCopy = new ArrayList<amigos>();
