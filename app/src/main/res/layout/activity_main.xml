@@ -24,7 +24,7 @@
         android:layout_below="@id/btnImgProducto"
         android:layout_marginTop="15dp"
         android:hint="Codigo"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/txtdescripcion"
@@ -42,7 +42,7 @@
         android:layout_below="@id/txtdescripcion"
         android:layout_marginTop="19dp"
         android:hint="Marca"
-        android:inputType="phone" />
+        android:inputType="textMultiLine" />
 
     <EditText
         android:id="@+id/txtPresentacion"
@@ -51,7 +51,7 @@
         android:layout_below="@id/txtMarca"
         android:layout_marginTop="10dp"
         android:hint="Presentacion"
-        android:inputType="textEmailAddress" />
+        android:inputType="textMultiLine" />
 
     <EditText
         android:id="@+id/txtPrecio"
