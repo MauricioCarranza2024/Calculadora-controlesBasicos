@@ -28,7 +28,7 @@ public class lista_amigos extends AppCompatActivity {
     FloatingActionButton btnAgregarProductos;
     ListView lts;
     Cursor cProductos;
-    clientes misClientes;
+    Clientes misClientes;
     DB db;
     final ArrayList<amigos> alProductos = new ArrayList<amigos>();
     final ArrayList<amigos> alProductosCopy = new ArrayList<amigos>();
@@ -179,21 +179,21 @@ public class lista_amigos extends AppCompatActivity {
                     if( valor.length()<=0 ){
                         alProductos.addAll(alProductosCopy);
                     }else{
-                        for (amigos amigo : alProductosCopy){
-                            String codigo = tienda.getNombre();
-                            String descripcion = amigo.getDireccion();
-                            String marca = amigo.getTelefono();
-                            String presentacion = amigo.getEmail();
-                            String precio = amigo.getDui();
-                            if(nombre.toLowerCase().trim().contains(valor) ||
-                                    direccion.toLowerCase().trim().contains(valor) ||
-                                    tel.trim().contains(valor) ||
-                                    email.trim().toLowerCase().contains(valor) ||
-                                    dui.trim().contains(valor)){
-                                alAmigos.add(amigo);
+                        for (amigos productos : alProductosCopy){
+                            String codigo = productos.getCodigo();
+                            String descripcion = productos.getDescripcion();
+                            String marca = productos.getMarca();
+                            String presentacion = productos.getPresentacion();
+                            String precio = productos.getPrecio();
+                            if(codigo.toLowerCase().trim().contains(valor) ||
+                                    descripcion.toLowerCase().trim().contains(valor) ||
+                                    marca.trim().contains(valor) ||
+                                    presentacion.trim().toLowerCase().contains(valor) ||
+                                    precio.trim().contains(valor)){
+                                alProductos.add(productos);
                             }
                         }
-                        adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alAmigos);
+                        adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alProductos);
                         lts.setAdapter(adImagenes);
                     }
                 }catch (Exception e){
