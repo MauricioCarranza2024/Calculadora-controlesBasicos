@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtcodigo"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="26dp"
         android:hint="Descripcion"
         android:inputType="textMultiLine" />
 
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtdescripcion"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="26dp"
         android:hint="Marca"
         android:inputType="textMultiLine" />
 
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtMarca"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="26dp"
         android:hint="Presentacion"
         android:inputType="textMultiLine" />
 
@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtPresentacion"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="26dp"
         android:hint="Precio"
         android:inputType="number" />
 
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtPrecio"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="27dp"
         android:text="GUARDAR PRODUCTOS" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
