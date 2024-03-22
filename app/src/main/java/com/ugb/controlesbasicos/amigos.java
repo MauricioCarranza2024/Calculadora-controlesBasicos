@@ -8,6 +8,7 @@ public class amigos {
     String presentacion;
     String precio;
     String foto;
+
     public amigos(String idProducto, String codigo, String descripcion, String marca, String presentacion, String precio, String foto) {
         this.idProducto = idProducto;
         this.codigo = codigo;

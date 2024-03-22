@@ -203,6 +203,7 @@ public class lista_amigos extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+
             }
         });
     }
